@@ -4,6 +4,8 @@ import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, Users } from "lucide-react";
+import CreditButton from "./CreditButton";
+import RoleRedirect from "./RoleRedirect";
 
 const Header = async () => {
   const user = await checkUser();
@@ -20,7 +22,7 @@ const Header = async () => {
         />
       </Link>
 
-      {/* {user && <RoleRedirect role={user.role} />} */}
+      {user && <RoleRedirect role={user.role} />}
 
       <div className='flex items-center gap-3'>
         <Show when='signed-out'>
@@ -56,14 +58,14 @@ const Header = async () => {
             </>
           )}
 
-          {/* <CreditButton
+          <CreditButton
             role={user?.role === "INTERVIEWER" ? "INTERVIEWER" : "INTERVIEWEE"}
             credits={
               (user?.role === "INTERVIEWER"
                 ? user?.creditBalance
                 : user?.credits) ?? 0
             }
-          /> */}
+          />
 
           <UserButton />
         </Show>
