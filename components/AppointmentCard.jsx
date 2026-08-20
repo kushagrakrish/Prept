@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { RATING_LABEL, RATING_STYLES, STATUS_STYLES } from "@/lib/data";
 import { useAuth } from "@clerk/nextjs";
+import { FeedbackModal } from "./FeedbackModal";
 
 export default function AppointmentCard({ booking, mode, isPast }) {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
@@ -40,6 +41,14 @@ export default function AppointmentCard({ booking, mode, isPast }) {
 
   return (
     <>
+      <FeedbackModal
+        open={feedbackOpen}
+        onOpenChange={setFeedbackOpen}
+        feedback={feedback}
+        intervieweeName={
+          mode === "interviewer" ? booking.interviewee.name : null
+        }
+      />
       <article className='group relative bg-[#0f0f11] border border-white/10 transition-all duration-300 hover:-translate-y-0.5 rounded-2xl bg-linear-to-t from-transparent via-transparent to-violet-500/10 p-7 flex flex-col gap-6 self-start'>
         <div className='flex items-start justify-between gap-4'>
           <div className='flex items-center gap-4 min-w-0'>
