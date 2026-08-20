@@ -4,13 +4,13 @@ export const GrayTitle = ({ children }) => (
   </span>
 );
 export const GoldTitle = ({ children }) => (
-  <span className='bg-linear-to-br from-amber-300 via-amber-400 to-amber-600 bg-clip-text text-transparent'>
+  <span className='bg-linear-to-r from-violet-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent font-semibold'>
     {children}
   </span>
 );
 export const SectionLabel = ({ children }) => (
-  <p className='inline-flex items-center gap-2 text-xs font-semibold text-amber-400 tracking-[0.14em] uppercase mb-4'>
-    <span className='w-4 h-px bg-amber-400' />
+  <p className='inline-flex items-center gap-2 text-xs font-semibold text-violet-400 tracking-[0.14em] uppercase mb-4'>
+    <span className='w-4 h-px bg-violet-500' />
     {children}
   </p>
 );

@@ -1,6 +1,7 @@
 import { getInterviewer } from "@/actions/explore";
-import PageHeader from "@/components/reusables";
 import { notFound } from "next/navigation";
+import { checkUser } from "@/lib/checkUser";
+import InterviewerProfileClient from "@/components/InterviewerProfileClient";
 
 export default async function InterviewerPage({ params }) {
   const { id } = await params;
@@ -10,17 +11,12 @@ export default async function InterviewerPage({ params }) {
     notFound();
   }
 
+  const dbUser = await checkUser();
+
   return (
-    <main className='min-h-screen bg-black text-stone-100'>
-      <PageHeader
-        label='Interviewer Profile'
-        gold={interviewer.name}
-        description={
-          interviewer.title && interviewer.company
-            ? `${interviewer.title} at ${interviewer.company}`
-            : interviewer.title || interviewer.company || ""
-        }
-      />
-    </main>
+    <InterviewerProfileClient
+      interviewer={interviewer}
+      dbUser={dbUser}
+    />
   );
 }

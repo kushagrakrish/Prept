@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import {
   GoldTitle,
   GrayTitle,
@@ -19,16 +22,26 @@ import { PricingTable } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <div className='bg-black overflow-x-hidden'>
+    <div className='bg-black overflow-x-hidden text-stone-200'>
       {/* HERO */}
-      <section className='relative min-h-screen grid grid-cols-1 lg:grid-cols-5 px-4 sm:px-8 pt-28 sm:pt-32 pb-20 overflow-hidden'>
+      <motion.section 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className='relative min-h-screen grid grid-cols-1 lg:grid-cols-5 px-4 sm:px-8 pt-28 sm:pt-32 pb-20 overflow-hidden'
+      >
         <StarsBackgroundDemo />
 
         {/* LEFT */}
-        <div className='col-span-full lg:col-span-3 flex flex-col items-center justify-center text-center lg:-rotate-2'>
-          <Badge variant='gold'>Powered by AI — Now in Beta</Badge>
+        <motion.div 
+          initial={{ opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className='col-span-full lg:col-span-3 flex flex-col items-center justify-center text-center lg:-rotate-2 relative z-10'
+        >
+          <Badge variant='gold' className="mb-6">Powered by AI — Now in Beta</Badge>
 
-          <h1 className='font-serif relative text-5xl sm:text-6xl lg:text-7xl tracking-tighter max-w-4xl'>
+          <h1 className='font-serif relative text-5xl sm:text-6xl lg:text-7xl tracking-tighter max-w-4xl leading-tight'>
             <GrayTitle>Ace your next interview</GrayTitle>
             <br />
             <GoldTitle>with real experts</GoldTitle>
@@ -81,30 +94,32 @@ export default function Home() {
               cracked FAANG interviews via Prept
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* RIGHT */}
-        <div className='col-span-full lg:col-span-2 flex items-center justify-center lg:justify-start mt-12 lg:mt-0 lg:rotate-3'>
-          {/* <Image
-            src="/hero.png"
-            alt="Hero illustration"
-            width={600}
-            height={400}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-none h-auto"
-            priority
-          /> */}
-
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, x: 30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className='col-span-full lg:col-span-2 flex items-center justify-center lg:justify-start mt-12 lg:mt-0 lg:rotate-3 relative z-10'
+        >
           <CodeDemo duration={30000} writing />
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* LOGOS */}
-      <section className='relative z-10 border-y border-white/10 py-14'>
-        <p className='text-center text-xs font-medium text-stone-600 tracking-widest uppercase mb-8'>
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className='relative z-10 border-y border-white/5 py-14'
+      >
+        <p className='text-center text-xs font-semibold text-stone-600 tracking-widest uppercase mb-8'>
           Interviewees landed roles at
         </p>
 
-        <div className='flex flex-wrap items-center justify-center gap-24 px-6'>
+        <div className='flex flex-wrap items-center justify-center gap-12 sm:gap-24 px-6'>
           {LOGOS.map((l) => (
             <Image
               key={l.alt}
@@ -112,26 +127,39 @@ export default function Home() {
               alt={l.alt}
               width={50}
               height={50}
-              className='h-6 w-auto opacity-60 grayscale'
+              className='h-6 w-auto opacity-40 grayscale hover:opacity-80 transition-opacity duration-200'
             />
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* FEATURES */}
       <section className='relative z-10 py-28 max-w-5xl mx-auto px-6'>
-        <div className='text-center mb-16'>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className='text-center mb-16'
+        >
           <SectionLabel>Features</SectionLabel>
           <SectionHeading
             gray='Everything you need,'
             gold="nothing you don't"
           />
-        </div>
+        </motion.div>
 
         <div className='grid grid-cols-12 gap-4'>
-          <div className='col-span-12 md:col-span-7'>
+          {/* Card 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className='col-span-12 md:col-span-7'
+          >
             <BentoCard
-              icon={<Bot size={20} className='text-amber-400' />}
+              icon={<Bot size={20} className='text-violet-400' />}
               title={<GrayTitle>AI Question Generator</GrayTitle>}
               desc="Interviewers get a live AI co-pilot generating role-specific questions on demand — system design, behavioural, DSA — all tailored to the candidate's level."
             >
@@ -143,18 +171,25 @@ export default function Home() {
                 ))}
               </div>
             </BentoCard>
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-5'>
+          {/* Card 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='col-span-12 md:col-span-5'
+          >
             <BentoCard
-              icon={<Wallet size={16} className='text-amber-400' />}
+              icon={<Wallet size={16} className='text-violet-400' />}
               title={<GrayTitle>Credit System</GrayTitle>}
               desc='Subscribe for monthly credits. Book sessions. Interviewers earn and withdraw any time.'
             >
-              <div className='mt-5 rounded-xl bg-[#141417] border border-white/10 p-5 flex justify-between items-end'>
+              <div className='mt-5 rounded-xl bg-white/2 border border-white/5 p-5 flex justify-between items-end'>
                 <div>
                   <p className='text-xs text-stone-600 mb-1'>Your balance</p>
-                  <p className='font-serif text-4xl leading-none bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent'>
+                  <p className='font-serif text-4xl leading-none bg-linear-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent'>
                     28
                   </p>
                   <p className='text-xs text-stone-600 mt-1'>
@@ -162,12 +197,19 @@ export default function Home() {
                   </p>
                 </div>
 
-                <Badge variant='secondary'>+10 this month</Badge>
+                <Badge variant='gold'>+10 this month</Badge>
               </div>
             </BentoCard>
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-4'>
+          {/* Card 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className='col-span-12 md:col-span-4'
+          >
             <BentoCard
               icon='📹'
               title='HD Video Calls'
@@ -175,25 +217,46 @@ export default function Home() {
             >
               <MockUI rows={3} />
             </BentoCard>
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-4'>
+          {/* Card 4 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='col-span-12 md:col-span-4'
+          >
             <BentoCard
               icon='💬'
               title='Persistent Chat'
               desc='Message your interviewer before and after the call. Share resources, prep notes, and follow-ups in one thread.'
             />
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-4'>
+          {/* Card 5 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className='col-span-12 md:col-span-4'
+          >
             <BentoCard
               icon='🔒'
               title='Security by Arcjet'
               desc='Bot protection, rate limiting, and abuse prevention baked into every API route.'
             />
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-6'>
+          {/* Card 6 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className='col-span-12 md:col-span-6'
+          >
             <BentoCard
               icon='📊'
               title={<GrayTitle>AI Feedback Reports</GrayTitle>}
@@ -201,9 +264,16 @@ export default function Home() {
             >
               <MockUI rows={5} />
             </BentoCard>
-          </div>
+          </motion.div>
 
-          <div className='col-span-12 md:col-span-6'>
+          {/* Card 7 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='col-span-12 md:col-span-6'
+          >
             <BentoCard
               icon='🗓️'
               title={<GoldTitle>Slot-based Scheduling</GoldTitle>}
@@ -220,26 +290,37 @@ export default function Home() {
                 ))}
               </div>
             </BentoCard>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ROLES */}
       <section className='relative z-10 pb-28 max-w-5xl mx-auto px-6'>
-        <div className='text-center mb-16'>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className='text-center mb-16'
+        >
           <SectionLabel>Who it&apos;s for</SectionLabel>
           <SectionHeading gray='Built for both sides' gold='of the table' />
-        </div>
+        </motion.div>
 
         <div className='grid md:grid-cols-2 gap-6'>
-          {ROLES.map((role) => (
-            <div
+          {ROLES.map((role, idx) => (
+            <motion.div
               key={role.label}
-              className='relative bg-[#0f0f11] border border-white/10 hover:border-amber-400/20 rounded-2xl p-12 h-full transition duration-300 overflow-hidden'
+              initial={{ opacity: 0, x: idx === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
+              whileHover={{ y: -6, borderColor: "rgba(139, 92, 246, 0.2)" }}
+              className='relative bg-[#0f0f11] border border-white/5 rounded-2xl p-12 h-full transition duration-300 overflow-hidden shadow-xl'
             >
-              <div className='absolute bottom-0 right-0 w-48 h-48 rounded-full bg-[radial-gradient(circle,rgba(251,191,36,0.05)_0%,transparent_70%)] pointer-events-none' />
+              <div className='absolute bottom-0 right-0 w-48 h-48 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.04)_0%,transparent_70%)] pointer-events-none' />
 
-              <span className='inline-block text-xs font-semibold text-amber-400 tracking-widest uppercase border border-amber-400/20 bg-amber-400/10 rounded-full px-3 py-1.5 mb-5'>
+              <span className='inline-block text-xs font-semibold text-violet-400 tracking-widest uppercase border border-violet-500/20 bg-violet-500/10 rounded-full px-3 py-1.5 mb-5'>
                 {role.label}
               </span>
 
@@ -254,20 +335,26 @@ export default function Home() {
               <ul className='space-y-3'>
                 {role.perks.map((p) => (
                   <li key={p} className='flex gap-3 text-sm text-stone-400'>
-                    <span className='mt-0.5 min-w-4 h-4 rounded-full bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xs text-amber-400'>
+                    <span className='mt-0.5 min-w-4 h-4 rounded-full bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-xs text-violet-400'>
                       ✓
                     </span>
                     {p}
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* PRICING */}
-      <section className='relative z-10 pb-28 max-w-5xl mx-auto px-6'>
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className='relative z-10 pb-28 max-w-5xl mx-auto px-6'
+      >
         <div className='text-center mb-16'>
           <SectionLabel>Pricing</SectionLabel>
           <SectionHeading
@@ -280,12 +367,19 @@ export default function Home() {
         </div>
 
         <PricingTable />
-      </section>
+      </motion.section>
 
       {/* CTA */}
-      <section className='relative z-10 pb-28 max-w-5xl mx-auto px-6'>
-        <div className='relative border border-amber-400/20 rounded-3xl px-3 sm:px-16 py-20 bg-linear-to-br from-amber-400/5 text-center overflow-hidden'>
+      <motion.section 
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className='relative z-10 pb-28 max-w-5xl mx-auto px-6'
+      >
+        <div className='relative border border-violet-500/20 rounded-3xl px-3 sm:px-16 py-20 bg-linear-to-br from-violet-500/5 text-center overflow-hidden shadow-2xl'>
           <StarsBackgroundDemo />
+          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(139,92,246,0.03)_0%,transparent_70%)] pointer-events-none" />
 
           <h2 className='font-serif relative text-4xl md:text-5xl leading-tight tracking-tight mb-4'>
             <GrayTitle>Your next interview</GrayTitle>
@@ -297,7 +391,7 @@ export default function Home() {
             Join thousands of engineers already levelling up on Prept.
           </p>
 
-          <div className='flex flex-col sm:flex-row justify-center gap-4'>
+          <div className='flex flex-col sm:flex-row justify-center gap-4 relative z-10'>
             <Link href='/onboarding' className='relative'>
               <Button variant='gold' size='hero'>
                 Get started
@@ -311,7 +405,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

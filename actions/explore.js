@@ -51,6 +51,10 @@ export const getInterviewer = async (id) => {
         availabilities: {
           where: { status: "AVAILABLE" },
         },
+        bookingsAsInterviewer: {
+          where: { status: "SCHEDULED" },
+          select: { startTime: true, endTime: true },
+        },
       },
     });
 

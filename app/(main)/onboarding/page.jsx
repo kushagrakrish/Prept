@@ -92,9 +92,9 @@ export default function OnboardingPage() {
                 key={r.value}
                 type='button'
                 onClick={() => setRole(r.value)}
-                className='text-left rounded-2xl p-8 border border-white/10 bg-[#0f0f11] hover:border-amber-400/20 hover:-translate-y-0.5 transition-all duration-300'
+                className='text-left rounded-2xl p-8 border border-white/10 bg-[#0f0f11] hover:border-violet-500/20 hover:-translate-y-0.5 transition-all duration-300'
               >
-                <span className='w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xl mb-5'>
+                <span className='w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-xl mb-5'>
                   {r.icon}
                 </span>
                 <h3 className='font-serif text-xl tracking-tight mb-3 text-stone-100'>
@@ -113,7 +113,7 @@ export default function OnboardingPage() {
             {/* role strip */}
             <div className='flex items-center justify-between bg-[#0f0f11] border border-white/10 rounded-2xl px-6 py-4'>
               <div className='flex items-center gap-3'>
-                <span className='w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-base shrink-0'>
+                <span className='w-9 h-9 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-base shrink-0'>
                   {ONBOARDING_ROLES.find((r) => r.value === role)?.icon}
                 </span>
                 <div>
@@ -169,7 +169,7 @@ export default function OnboardingPage() {
                       }
                       className={`text-xs px-4 py-2 rounded-lg border ${
                         form.yearsExp === opt.value
-                          ? "border-amber-400/40 bg-amber-400/10 text-amber-400"
+                          ? "border-violet-500/40 bg-violet-500/10 text-violet-400"
                           : "border-white/10 text-stone-500"
                       }`}
                     >
@@ -192,7 +192,7 @@ export default function OnboardingPage() {
                         onClick={() => toggleCategory(cat.value)}
                         className={`text-xs px-4 py-2 rounded-lg border ${
                           active
-                            ? "border-amber-400/40 bg-amber-400/10 text-amber-400"
+                            ? "border-violet-500/40 bg-violet-500/10 text-violet-400"
                             : "border-white/10 text-stone-500"
                         }`}
                       >

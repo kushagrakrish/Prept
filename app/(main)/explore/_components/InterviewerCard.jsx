@@ -26,8 +26,8 @@ function InterviewerCard({ interviewer }) {
   const availability = availabilities?.[0];
 
   return (
-    <Card className='relative border border-white/10 hover:border-amber-400/20'>
-      <div className='absolute inset-0 bg-linear-to-br from-amber-400/5 via-transparent to-transparent pointer-events-none' />
+    <Card className='relative border border-white/10 hover:border-violet-500/20'>
+      <div className='absolute inset-0 bg-linear-to-br from-violet-500/5 via-transparent to-transparent pointer-events-none' />
 
       <CardContent className='flex flex-col gap-5'>
         {/* Top row — avatar + name + years */}
@@ -35,7 +35,7 @@ function InterviewerCard({ interviewer }) {
           <div className='flex items-center gap-3'>
             <Avatar className='w-11 h-11 border border-white/10 shrink-0'>
               <AvatarImage src={imageUrl} alt={name} />
-              <AvatarFallback className='bg-amber-400/10 border border-amber-400/20 text-amber-400 text-sm font-medium'>
+              <AvatarFallback className='bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-medium'>
                 {name?.[0] ?? "?"}
               </AvatarFallback>
             </Avatar>
@@ -74,7 +74,7 @@ function InterviewerCard({ interviewer }) {
             {categories.slice(0, 4).map((cat) => (
               <span
                 key={cat}
-                className='text-xs px-2.5 py-1 rounded-lg border border-amber-400/20 bg-amber-400/5 text-amber-400'
+                className='text-xs px-2.5 py-1 rounded-lg border border-violet-500/20 bg-violet-500/5 text-violet-400'
               >
                 {CATEGORY_LABEL[cat] ?? cat}
               </span>
@@ -92,7 +92,7 @@ function InterviewerCard({ interviewer }) {
         {/* Bottom row — credit rate + availability + CTA */}
         <div className='flex items-center justify-between gap-3'>
           <div className='flex flex-col gap-1'>
-            <p className='text-lg font-serif leading-none bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent'>
+            <p className='text-lg font-serif leading-none bg-linear-to-br from-violet-400 to-cyan-400 bg-clip-text text-transparent'>
               {creditRate ?? 10}
               <span className='text-xs text-stone-500 font-sans ml-1'>
                 credits / session
@@ -111,7 +111,7 @@ function InterviewerCard({ interviewer }) {
           <Button
             variant='outline'
             size='sm'
-            className='shrink-0 border-amber-400/20 text-amber-400 hover:bg-amber-400/10 hover:border-amber-400/40'
+            className='shrink-0 border-violet-500/20 text-violet-400 hover:bg-violet-500/10 hover:border-violet-500/40'
             asChild
           >
             <Link href={`/interviewers/${id}`}>View profile →</Link>

@@ -1,11 +1,11 @@
 function BentoCard({ icon, title, desc, children, className = "" }) {
   return (
     <div
-      className={`relative bg-[#0f0f11] border border-white/10 hover:border-amber-400/20 rounded-2xl p-9 h-full transition duration-300 overflow-hidden ${className}`}
+      className={`relative bg-[#0f0f11] border border-white/10 hover:border-violet-500/20 rounded-2xl p-9 h-full transition duration-300 overflow-hidden ${className}`}
     >
-      <div className='absolute inset-0 bg-linear-to-br from-amber-400/5 via-transparent pointer-events-none' />
+      <div className='absolute inset-0 bg-linear-to-br from-violet-500/5 via-transparent pointer-events-none' />
 
-      <span className='w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xl mb-5'>
+      <span className='w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-xl mb-5'>
         {icon}
       </span>
 

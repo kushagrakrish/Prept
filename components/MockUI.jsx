@@ -3,13 +3,13 @@ function MockUI({ rows = 3 }) {
   const colors = [
     "bg-white/5",
     "bg-white/5",
-    "bg-amber-400/15",
+    "bg-violet-500/15",
     "bg-white/5",
     "bg-white/5",
   ];
 
   return (
-    <div className='mt-5 rounded-xl bg-[#141417] border border-white/10 overflow-hidden'>
+    <div className='mt-5 rounded-xl bg-[#0f0f11] border border-white/10 overflow-hidden'>
       <div className='h-9 bg-white/5 border-b border-white/10 flex items-center px-3.5 gap-1.5'>
         <span className='w-2 h-2 rounded-full bg-[#ff5f57]' />
         <span className='w-2 h-2 rounded-full bg-[#ffbd2e]' />
