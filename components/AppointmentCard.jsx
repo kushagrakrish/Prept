@@ -143,16 +143,19 @@ export default function AppointmentCard({ booking, mode, isPast }) {
           </div>
         </div>
 
-        {feedback?.summary && (
-          <div className='rounded-xl border border-white/5 bg-[#0f0f11] px-4 py-3 flex flex-col gap-1.5'>
-            <p className='text-[10px] font-semibold text-stone-600 tracking-widest uppercase'>
-              AI Feedback
-            </p>
-            <p className='text-xs text-stone-400 font-light leading-relaxed line-clamp-2'>
-              {feedback.summary}
-            </p>
-          </div>
-        )}
+        {feedback?.summary &&
+          (mode === "interviewer" ||
+            has?.({ plan: "starter" }) ||
+            has?.({ plan: "pro" })) && (
+            <div className='rounded-xl border border-white/5 bg-[#0f0f11] px-4 py-3 flex flex-col gap-1.5'>
+              <p className='text-[10px] font-semibold text-stone-600 tracking-widest uppercase'>
+                AI Feedback
+              </p>
+              <p className='text-xs text-stone-400 font-light leading-relaxed line-clamp-2'>
+                {feedback.summary}
+              </p>
+            </div>
+          )}
 
         {(streamCallId || recordingUrl || feedback) && (
           <div className='flex items-center gap-2 flex-wrap pt-1'>
@@ -165,7 +168,7 @@ export default function AppointmentCard({ booking, mode, isPast }) {
               </Button>
             )}
 
-            {recordingUrl && has?.({ plan: "pro" }) && (
+            {recordingUrl && (mode === "interviewer" || has?.({ plan: "pro" })) && (
               <Button variant='outline' size='sm' className='gap-2' asChild>
                 <a
                   href={recordingUrl}
@@ -178,7 +181,9 @@ export default function AppointmentCard({ booking, mode, isPast }) {
             )}
 
             {feedback &&
-              (has?.({ plan: "starter" }) || has?.({ plan: "pro" })) && (
+              (mode === "interviewer" ||
+                has?.({ plan: "starter" }) ||
+                has?.({ plan: "pro" })) && (
                 <>
                   <Button
                     variant='outline'

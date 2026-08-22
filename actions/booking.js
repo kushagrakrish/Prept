@@ -122,7 +122,7 @@ export const bookSlot = async ({ interviewerId, startTime, endTime }) => {
           { user_id: interviewer.clerkUserId, role: "host" },
         ],
         settings_override: {
-          recording: { mode: "available", quality: "1080p" },
+          recording: { mode: "auto-on", quality: "1080p" },
           screensharing: {
             enabled: true,
             // target_resolution: { width: 1920, height: 1080 },
